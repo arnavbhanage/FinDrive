@@ -6,11 +6,22 @@ function App() {
   const [downPayment, setDownPayment] = useState("");
   const [interestRate, setInterestRate] = useState("");
   const [tenure, setTenure] = useState("");
-
+  const [income, setIncome] = useState("");
+setResult(data);
   const handleCalculate = () => {
-    console.log({
-      carPrice,
-      downPayment,
+    const data = {
+      monthlyPayment: 500,
+      totalInterest: 12000,
+      totalPayment: 20000
+    };
+    setResult(data);
+  };
+
+  return (
+    <div className="container">
+      <h1>FinDrive</h1>
+      <h2>Vehicle Finance Analyzer</h2>
+
       interestRate,
       tenure,
     });
@@ -55,5 +66,20 @@ function App() {
     </div>
   );
 }
-
+{result && (
+  <div>
+    <h3>Results</h3>
+    <p>Monthly Payment: ₹{result.monthlyPayment}</p>
+    <p>Total Interest: ₹{result.totalInterest}</p>
+    <p>Total Payment: ₹{result.totalPayment}</p>
+  </div>
+)}
 export default App;
+
+fetch(@app.route("/calculate")){
+  carPrice,
+  downPayment,
+  interestRate,
+  tenure,
+  income
+
