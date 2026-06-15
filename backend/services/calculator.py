@@ -14,3 +14,17 @@ def calculate_emi(
         emi = loan_amount * monthly_interest_rate * (1 + monthly_interest_rate) ** tenure_months / ((1 + monthly_interest_rate) ** tenure_months - 1)
 
     return emi
+
+
+def affordability_score(
+        monthly_income,
+    monthly_expenses,
+    emi
+):
+    disposable_income = monthly_income - monthly_expenses
+    if disposable_income <= 0:
+        return 0
+
+    score = (disposable_income - emi) / disposable_income * 100
+    return max(0, min(score, 100))
+
