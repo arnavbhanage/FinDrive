@@ -28,3 +28,33 @@ def affordability_score(
     score = (disposable_income - emi) / disposable_income * 100
     return max(0, min(score, 100))
 
+def deal_score(
+        car_price,
+    down_payment,
+    interest_rate,
+    tenure_years,
+    monthly_income,
+    monthly_expenses
+):
+    emi = calculate_emi(car_price, down_payment, interest_rate, tenure_years)
+    score = affordability_score(monthly_income, monthly_expenses, emi)
+    return score
+
+
+
+def depreciation_value(car_price, depreciation_rate, years):
+    if years == 0.5:
+        depreciation_rate = 0.05  # 5% for the first 6 months
+    elif years == 1:
+        depreciation_rate = 0.15  # 15% for the first year
+    elif years == 2:
+        depreciation_rate = 0.3  # 25% for the first 2 years
+    elif years == 3:
+        depreciation_rate = 0.4  # 40% for the first 3 years
+    elif years > 3:
+        depreciation_rate = 0.5  # 50% for more than 3 years
+
+
+    remaining_value = car_price * (1 - depreciation_rate)
+    return remaining_value
+
