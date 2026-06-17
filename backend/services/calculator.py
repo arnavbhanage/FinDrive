@@ -58,3 +58,15 @@ def depreciation_value(car_price, depreciation_rate, years):
     remaining_value = car_price * (1 - depreciation_rate)
     return remaining_value
 
+def pros(emi, monthly_income):
+    if emi < 0.3 * monthly_income:
+        return "The EMI is affordable based on your income."
+    elif emi >= 0.3 * monthly_income and emi < 0.5 * monthly_income:
+        return "The EMI is moderately affordable based on your income."
+
+
+def cons(emi, monthly_income):
+    if emi >= 0.5 * monthly_income:
+        return "The EMI is high compared to your income, which may lead to financial strain."
+    elif emi >= 0.3 * monthly_income and emi < 0.5 * monthly_income:
+        return "The EMI is moderately high compared to your income, which may affect your savings." 
